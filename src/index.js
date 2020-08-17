@@ -1,16 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Task1 from "./Tasks/task1.js";
+import App from "./App";
 
-let l = (
-  <div>
-    <Task1 />
-    <hr />
-  </div>
+const rootElement = document.getElementById("root");
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  rootElement
 );
-
-const container = React.createElement("div", null, l);
-
-const root = document.getElementById("root");
-
-ReactDOM.render(container, root);

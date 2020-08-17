@@ -1,12 +1,16 @@
-/*import React from "react";
+import React from "react";
 import "./styles.css";
+import Task1 from "./Tasks/task1.js";
+
+let t1 = (
+  <fieldset>
+    <legend>Task 1</legend>
+    <Task1 />
+  </fieldset>
+);
+
+const container = React.createElement("div", null, t1);
 
 export default function App() {
-  return ( 
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
-    </div>
-  );
+  return <div className="App">{container}</div>;
 }
-*/
