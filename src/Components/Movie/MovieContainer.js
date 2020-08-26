@@ -8,7 +8,7 @@ function MovieContainer() {
   return (
     <>
       <div className="movieContainer">
-        <MovieListWithLoading isLoading />
+        <MovieListWithLoading isLoading={false} />
       </div>
     </>
   );

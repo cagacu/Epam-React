@@ -66,6 +66,11 @@ body {
   padding: 20px;
 }
 
+.contentMenu .menuItem a {
+  text-decoration: none;
+  color: black;
+}
+
 .contentMenu .sortMenu {
   display: inline-block;
   padding-left: 50%;

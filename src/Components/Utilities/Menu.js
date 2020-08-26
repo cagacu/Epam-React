@@ -9,7 +9,7 @@ function SortMenu() {
 function Menu() {
   const items = menuContent.map((each, i) => (
     <div className="menuItem" key={i}>
-      {each}
+      <a href="#">{each}</a>
     </div>
   ));
 
