@@ -3,14 +3,18 @@ import React from "react";
 let menuContent = ["All", "DOCUMENTARY", "COMEDY", "HORROR", "CRIME"];
 
 function SortMenu() {
-  return <div class="sortMenu">RELEASE DATE</div>;
+  return <div className="sortMenu">RELEASE DATE</div>;
 }
 
 function Menu() {
-  const items = menuContent.map((each) => <div class="menuItem">{each}</div>);
+  const items = menuContent.map((each, i) => (
+    <div className="menuItem" key={i}>
+      {each}
+    </div>
+  ));
 
   return (
-    <div class="contentMenu">
+    <div className="contentMenu">
       {items}
       <SortMenu />
     </div>
