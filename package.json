@@ -1,7 +1,7 @@
 {
-  "name": "epam-react",
+  "name": "epam-app-sandbox",
   "version": "1.0.0",
-  "description": "personal training",
+  "description": "",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
