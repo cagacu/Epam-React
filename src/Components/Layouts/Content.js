@@ -7,7 +7,7 @@ function Content(props) {
   return (
     <div className="content">
       <Menu />
-      <ErrorBoundary IsOk>
+      <ErrorBoundary>
         <MovieContainer />
       </ErrorBoundary>
     </div>
