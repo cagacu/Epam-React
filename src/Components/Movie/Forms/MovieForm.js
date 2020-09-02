@@ -1,6 +1,7 @@
 import React from "react";
 import { Form } from "react-bootstrap";
 import MovieGenreSelect from "./MovieGenreSelect";
+import ErrorBoundary from "../../../Containers/Error/ErrorBoundary";
 
 class MovieForm extends React.Component {
   constructor(props) {
@@ -44,33 +45,35 @@ class MovieForm extends React.Component {
     } else movieIdLabel = null;
 
     return (
-      <Form>
-        {movieIdLabel}
-        <Form.Group>
-          <Form.Label>Title</Form.Label>
-          <Form.Control type="text" value={this.state.movie.title} />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Release Date</Form.Label>
-          <Form.Control type="date" value={this.state.movie.releaseDate} />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Movie URL</Form.Label>
-          <Form.Control type="url" value={this.state.movie.url} />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Genre</Form.Label>
-          <MovieGenreSelect selectedValue={this.state.movie.genre} />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Overview</Form.Label>
-          <Form.Control type="text" value={this.state.movie.overview} />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Runtime</Form.Label>
-          <Form.Control type="number" value={this.state.movie.runtime} />
-        </Form.Group>
-      </Form>
+      <ErrorBoundary>
+        <Form>
+          {movieIdLabel}
+          <Form.Group>
+            <Form.Label>Title</Form.Label>
+            <Form.Control type="text" value={this.state.movie.title} />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Release Date</Form.Label>
+            <Form.Control type="date" value={this.state.movie.releaseDate} />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Movie URL</Form.Label>
+            <Form.Control type="url" value={this.state.movie.url} />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Genre</Form.Label>
+            <MovieGenreSelect selectedValue={this.state.movie.genre} />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Overview</Form.Label>
+            <Form.Control type="text" value={this.state.movie.overview} />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Runtime</Form.Label>
+            <Form.Control type="number" value={this.state.movie.runtime} />
+          </Form.Group>
+        </Form>
+      </ErrorBoundary>
     );
   }
 }
