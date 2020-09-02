@@ -49,7 +49,7 @@ body {
 }
 
 .headerAddMovie {
-  width: 100px;
+  width: 150px;
   margin-right: 10px;
   margin-left: auto;
   padding-top: 10px;
@@ -88,6 +88,10 @@ body {
   padding: 20px;
 }
 
+.movieImg {
+  position: relative;
+}
+
 .movieImg img {
   width: 100%;
 }
@@ -95,4 +99,14 @@ body {
 .movieTitle {
   display: block;
   font-weight: bold;
+}
+
+.threedots {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.popover {
+  background-color: #343a40;
 }
