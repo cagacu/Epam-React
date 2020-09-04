@@ -1,6 +1,6 @@
 import React from "react";
 import SearchBox from "../Utilities/SearchBox.js";
-import AddMoviewButton from "../Utilities/AddMovie.js";
+import AddMoviewButton from "../../Containers/Movie/AddMovie";
 
 function Header(props) {
   return (
