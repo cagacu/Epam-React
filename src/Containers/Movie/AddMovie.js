@@ -1,22 +1,21 @@
-import React from "react";
-import CommonModal from "../../Components/Modals/CommonModal";
-import MovieAddForm from "../../Components/Movie/MovieAddForm";
-
-function Save() {
-  alert("Hi");
-}
+import React, { Fragment } from "react";
+import ErrorBoundary from "../Error/ErrorBoundary";
+import AddEditModal from "../../Components/Modals/AddEditModal";
+import MovieForm from "../../Components/Movie/Forms/MovieForm";
 
 function AddMoviewButton() {
   return (
-    <div className="headerAddMovie">
-      <input type="button" id="addMoviewBtn" value="+ Add Movie" />
-      <CommonModal
-        button={<input type="textbox" />}
-        modalForm={<MovieAddForm />}
-        header="Add Movie"
-        onSave={Save}
-      ></CommonModal>
-    </div>
+    <Fragment>
+      <div className="headerAddMovie">
+        <ErrorBoundary>
+          <AddEditModal
+            buttonText="+ Add Movie"
+            modalForm={<MovieForm />}
+            header="Add Movie"
+          ></AddEditModal>
+        </ErrorBoundary>
+      </div>
+    </Fragment>
   );
 }
 
