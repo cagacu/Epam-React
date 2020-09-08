@@ -8,7 +8,11 @@ function MovieCard(props) {
   return (
     <div className="movieCard">
       <div className="movieImg">
-        <img src={props.imageUrl} alt={props.altText} />
+        <img
+          src={props.imageUrl}
+          alt={props.altText}
+          onClick={() => props.onMovieSelect(props.movieId)}
+        />
         <AddEditModal
           buttonText="Edit Movie"
           modalForm={<MovieForm movieid={props.movieId} />}
@@ -34,7 +38,8 @@ MovieCard.propTypes = {
   movieId: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  movieType: PropTypes.string.isRequired
+  movieType: PropTypes.string.isRequired,
+  onMovieSelect: PropTypes.func.isRequired
 };
 
 MovieCard.defaultProps = {

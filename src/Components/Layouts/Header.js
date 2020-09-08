@@ -1,8 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import SearchBox from "../Utilities/SearchBox.js";
 import AddMoviewButton from "../../Containers/Movie/AddMovie";
+import MovieDetail from "../../Containers/Movie/MovieDetail";
 
-function Header(props) {
+function Header({ onMovieSelectCallBack }) {
+  const [movieId, setMovieId] = useState(-1);
+
+  useEffect(() => {
+    let selectedMovieId = onMovieSelectCallBack();
+    setMovieId(selectedMovieId);
+  }, [onMovieSelectCallBack]);
+
+  if (movieId <= -1) {
+    return (
+      <>
+        <SearchHeader />
+      </>
+    );
+  }
+  return (
+    <>
+      <div className="header">
+        <MovieDetail onReset={setMovieId} movieId={movieId} />
+      </div>
+    </>
+  );
+}
+
+function SearchHeader(props) {
   return (
     <div className="header">
       <AddMoviewButton />

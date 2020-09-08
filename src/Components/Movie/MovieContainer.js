@@ -4,11 +4,14 @@ import LoadingContainer from "../../Containers/Loading/LoadingContainer.js";
 
 const MovieListWithLoading = LoadingContainer(MovieList);
 
-function MovieContainer() {
+function MovieContainer(props) {
   return (
     <>
       <div className="movieContainer">
-        <MovieListWithLoading isLoading={false} />
+        <MovieListWithLoading
+          isLoading={false}
+          onMovieSelect={props.onMovieSelect}
+        />
       </div>
     </>
   );

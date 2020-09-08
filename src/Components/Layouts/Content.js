@@ -8,7 +8,7 @@ function Content(props) {
     <div className="content">
       <Menu />
       <ErrorBoundary>
-        <MovieContainer />
+        <MovieContainer onMovieSelect={props.onMovieSelect} />
       </ErrorBoundary>
     </div>
   );

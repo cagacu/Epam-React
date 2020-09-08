@@ -68,7 +68,7 @@ let movies = [
   }
 ];
 
-function MovieList() {
+function MovieList(props) {
   const EmptyContainer = () => "There is not any movie right now !";
 
   const FilledContainer = () =>
@@ -80,6 +80,7 @@ function MovieList() {
         movieType={movie.movieType}
         year={movie.year}
         movieId={movie.movieId}
+        onMovieSelect={props.onMovieSelect}
       />
     ));
 
