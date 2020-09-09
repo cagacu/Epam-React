@@ -4,12 +4,7 @@ import AddMoviewButton from "../../Containers/Movie/AddMovie";
 import MovieDetail from "../../Containers/Movie/MovieDetail";
 
 function Header({ onMovieSelectCallBack, onMovieSelect }) {
-  const [movieId, setMovieId] = useState(-1);
-
-  useEffect(() => {
-    let selectedMovieId = onMovieSelectCallBack();
-    setMovieId(selectedMovieId);
-  }, [onMovieSelectCallBack]);
+  const movieId = useHeaderMovieSelectChange(onMovieSelectCallBack);
 
   if (movieId <= -1) {
     return (
@@ -34,6 +29,17 @@ function SearchHeader(props) {
       <SearchBox IsHeader="true" />
     </div>
   );
+}
+
+function useHeaderMovieSelectChange(onMovieSelectCallBack) {
+  const [movieId, setMovieId] = useState(-1);
+
+  useEffect(() => {
+    let selectedMovieId = onMovieSelectCallBack();
+    setMovieId(selectedMovieId);
+  }, [onMovieSelectCallBack]);
+
+  return movieId;
 }
 
 export default Header;
