@@ -14,7 +14,10 @@ export default function App() {
 
   return (
     <>
-      <Header onMovieSelectCallBack={callMovieSelectFunction} />
+      <Header
+        onMovieSelectCallBack={callMovieSelectFunction}
+        onMovieSelect={setSelectedMovieId}
+      />
       <Content onMovieSelect={setSelectedMovieId} />
       <Footer />
     </>

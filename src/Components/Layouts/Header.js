@@ -3,7 +3,7 @@ import SearchBox from "../Utilities/SearchBox.js";
 import AddMoviewButton from "../../Containers/Movie/AddMovie";
 import MovieDetail from "../../Containers/Movie/MovieDetail";
 
-function Header({ onMovieSelectCallBack }) {
+function Header({ onMovieSelectCallBack, onMovieSelect }) {
   const [movieId, setMovieId] = useState(-1);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ function Header({ onMovieSelectCallBack }) {
   return (
     <>
       <div className="header">
-        <MovieDetail onReset={setMovieId} movieId={movieId} />
+        <MovieDetail onReset={onMovieSelect} movieId={movieId} />
       </div>
     </>
   );
