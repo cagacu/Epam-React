@@ -1,11 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import storeFactory from './Core/Store/storeFactory';
+import { Provider } from 'react-redux'
+import fetchMovieListAsync from './Core/Actions/actionCreators';
 
-const rootElement = document.getElementById("root");
+const store = storeFactory();
+
+store.dispatch(fetchMovieListAsync(2));
+
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store} >
+      <App />
+    </Provider>
   </React.StrictMode>,
-  rootElement
+  document.getElementById("root")
 );

@@ -1,0 +1,8 @@
+Step 1 : docker build -t epam-react .
+Step 2 : Docker run --rm -ti -p:8080:3000 -v //D/Training/React/Epam.React/Epam-React:/epamapp/ epam-react
+Step 3 : >> npm install 
+Step 4 : ls src
+Step 4 : >> npm start
+
+
+-- Docker start epam-react
