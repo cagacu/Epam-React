@@ -55,7 +55,7 @@ class AddEditModal extends CommonModal {
           <Modal.Header closeButton>
             <Modal.Title>{this.props.header}</Modal.Title>
           </Modal.Header>
-          <Modal.Body>{this.props.modalForm}</Modal.Body>
+          <Modal.Body>{this.props.children}</Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={this.hideModal}>
               Close

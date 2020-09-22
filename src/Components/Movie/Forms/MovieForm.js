@@ -2,8 +2,6 @@ import React from "react";
 import { Form } from "react-bootstrap";
 import MovieGenreSelect from "./MovieGenreSelect";
 import ErrorBoundary from "../../../Containers/Error/ErrorBoundary";
-import fetchMovie from "../../../Core/Actions/actionCreators";
-import connect from "react-redux/lib/connect/connect";
 
 class MovieForm extends React.Component {
   constructor(props) {
@@ -16,10 +14,6 @@ class MovieForm extends React.Component {
       this.setState({ isEditForm: false });
     } else {
       this.setState({ isEditForm: true });
-
-      //var m = this.props.dispatch(fetchMovie(this.props.movieid));
-      
-      //console.log("EDIT >>>", m);
 
       this.setState({
         movie: {
@@ -85,13 +79,4 @@ class MovieForm extends React.Component {
   }
 }
 
-
-const mapDispatchToProps = dispatch => ({
-  getMovie : se => dispatch(fetchMovie(se))
-})
-
-// const mapSortStateToProps = (state) => ({
-//   selectedSortBy : getSelectedSortBy(state.movieList.sortBy)
-// })
-
-export default connect(null, mapDispatchToProps)(MovieForm);
+export default MovieForm;

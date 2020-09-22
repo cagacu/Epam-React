@@ -16,10 +16,11 @@ function MovieCard(props) {
         />
         <AddEditModal
           buttonText="Edit Movie"
-          modalForm={<MovieForm movieid={props.movieId} />}
           header="Edit Movie"
           isEditModal="true"
-        ></AddEditModal>
+        >
+          <MovieForm movieid={props.movieId} movie = {props.fetchedMovie} />
+        </AddEditModal>
         <DeleteModal
           buttonText="Delete Movie"
           header="Delete Movie"
