@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import SearchBox from "../Utilities/SearchBox.js";
 import AddMoviewButton from "../../Containers/Movie/AddMovie";
 import MovieDetail from "../../Containers/Movie/MovieDetail";
+import { selectMovie } from "../../Core/Actions/actionCreators"
+import { connect } from 'react-redux'
 
-function Header({ onMovieSelectCallBack, onMovieSelect }) {
-  const movieId = useHeaderMovieSelectChange(onMovieSelectCallBack);
-
-  if (movieId <= -1) {
+function Header(props) {
+  if (!props.selectedMovie) {
     return (
       <>
         <SearchHeader />
@@ -16,7 +16,7 @@ function Header({ onMovieSelectCallBack, onMovieSelect }) {
   return (
     <>
       <div className="header">
-        <MovieDetail onReset={onMovieSelect} movieId={movieId} />
+        <MovieDetail onReset={props.onMovieSelect} selectedMovie={props.selectedMovie} />
       </div>
     </>
   );
@@ -31,15 +31,12 @@ function SearchHeader(props) {
   );
 }
 
-function useHeaderMovieSelectChange(onMovieSelectCallBack) {
-  const [movieId, setMovieId] = useState(-1);
+const mapStateToProps = (state) => ({
+  selectedMovie: state.movieList.selectedMovie
+})
 
-  useEffect(() => {
-    let selectedMovieId = onMovieSelectCallBack();
-    setMovieId(selectedMovieId);
-  }, [onMovieSelectCallBack]);
+const mapDispatchToProps = dispatch => ({
+  onMovieSelect: id => dispatch(selectMovie(id))
+})
 
-  return movieId;
-}
-
-export default Header;
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
