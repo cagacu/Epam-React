@@ -10,7 +10,6 @@ function MovieContainer(props) {
       <div className="movieContainer">
         <MovieListWithLoading
           isLoading={false}
-          onMovieSelect={props.onMovieSelect}
         />
       </div>
     </>

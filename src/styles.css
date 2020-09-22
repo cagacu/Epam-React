@@ -84,12 +84,11 @@ body {
 .movieCard {
   display: inline-block;
   width: 310px;
-  height: 500px;
   padding: 20px;
 }
 
 .movieImg {
-  position: relative;
+  
 }
 
 .movieImg img {

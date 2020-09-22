@@ -1,7 +1,7 @@
 
 
 const initialState = {
-    movieList: {}
+    movieList: { movies : { data : [] }}
 }
 
 export default initialState;

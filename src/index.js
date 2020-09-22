@@ -7,7 +7,7 @@ import fetchMovieListAsync from './Core/Actions/actionCreators';
 
 const store = storeFactory();
 
-store.dispatch(fetchMovieListAsync(2));
+store.dispatch(fetchMovieListAsync(8));
 
 
 ReactDOM.render(

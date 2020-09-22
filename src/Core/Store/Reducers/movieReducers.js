@@ -4,6 +4,11 @@ const movieList = (state =[], action)  => {
 
     switch (action.type)
     {
+        case ACTIONS.SELECT_MOVIE:
+            if(action.payload.movieId === -1)
+                return state;
+            else
+                return {...state, selectedMovie : state.movies.data.find(m => m.id === action.payload.movieId)}
         case ACTIONS.FETCH_MOVIE_LIST_ASYNC:
         case ACTIONS.FETCH_MOVIE_LIST_ASYNC_REQUEST:
             return {...state, isFetching : action.payload.isFetching }

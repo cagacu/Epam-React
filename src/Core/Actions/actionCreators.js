@@ -1,5 +1,5 @@
 import ACTIONS from "./actionTypes.js"
-
+import API_CONFIGS from "./../Utils/configs";
 
 const fetchMovieListAsyncRequest = () => ({
     type : ACTIONS.FETCH_MOVIE_LIST_ASYNC_REQUEST,
@@ -18,20 +18,21 @@ const fetchMovieListAsyncResponse = (limit, responseJson) => ({
     }
 })
 
-const fetchMovieListAsync = (limit) => (dispatch) =>
+const fetchMovieListAsync = (limit = 8) => (dispatch) =>
 {
     dispatch(fetchMovieListAsyncRequest())
-    return fetch('localhost:4000/movies?limit='+limit)
+    return fetch(API_CONFIGS.MOVIE_API_MOVIES_URL +'?limit='+limit)
     .then(response => response.json())
     .then(json => dispatch(fetchMovieListAsyncResponse(limit, json)))
 }
 
+const selectMovie = (movieId) => ({
+    type : ACTIONS.SELECT_MOVIE,
+    payload : {
+        movieId : movieId
+    }
+})
 
-// const fetchMovieListAsync = (count) => (dispatch) => ({
-//     type : ACTIONS.FETCH_MOVIE_LIST_ASYNC,
-//     payload : {
-//         count : count
-//     }
-// })
+export { selectMovie };
 
 export default fetchMovieListAsync;

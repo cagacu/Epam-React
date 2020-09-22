@@ -10,7 +10,7 @@ function MovieCard(props) {
       <div className="movieImg">
         <img
           src={props.imageUrl}
-          alt={props.altText}
+          alt=""
           onClick={() => props.onMovieSelect(props.movieId)}
         />
         <AddEditModal
@@ -35,7 +35,7 @@ function MovieCard(props) {
 export default MovieCard;
 
 MovieCard.propTypes = {
-  movieId: PropTypes.string.isRequired,
+  movieId: PropTypes.number.isRequired,
   imageUrl: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   movieType: PropTypes.string.isRequired,
