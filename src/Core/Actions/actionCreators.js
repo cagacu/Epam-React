@@ -51,6 +51,13 @@ export const fetchSortedMovieListAsync = (sortBy, limit) => (dispatch) =>
     .then(json => dispatch(fetchMovieListAsyncResponse(json, { limit : limit, sortBy : sortBy })))
 }
 
+export const fetchMovie = (movieId) => ({
+    type : ACTIONS.FETCH_MOVIE,
+    payload : {
+        movie : fetch(API_CONFIGS.MOVIE_API_MOVIES_URL + '/' + movieId).then(response => response.json())
+    }
+})
+
 
 
 export default fetchMovieListAsync;

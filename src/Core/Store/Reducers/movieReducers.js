@@ -23,6 +23,11 @@ const movieList = (state =[], action)  => {
                 receivedAt : action.payload.receivedAt,
                 isFetching : action.payload.isFetching
             }
+        case ACTIONS.FETCH_MOVIE:
+            if(action.payload.movie)
+                return {...state, fetchedMovie : action.payload.movie }
+            else
+                return {...state, fetchedMovie : undefined };
         default:
             return state;
     }

@@ -5,6 +5,7 @@ const actionConstants = {
     SELECT_MOVIE : "SELECT_MOVIE",
     FILTER_MOVIE_BY_GENRE : "FILTER_MOVIE_BY_GENRE",
     SORT_MOVIE_LIST : "SORT_MOVIE_LIST",
+    FETCH_MOVIE : "FETCH_MOVIE",
 }
 
 export default actionConstants;
