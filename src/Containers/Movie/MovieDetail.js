@@ -18,8 +18,8 @@ function MovieDetail(props) {
                 <span className="detailsRatingSpan">{props.selectedMovie.vote_average}</span>
               </div>
               <div>
-                <span>{props.selectedMovie.release_date}</span>
-                <span>{props.selectedMovie.runtime}</span>
+                <span>{props.selectedMovie.release_date}   </span>
+                <span>{props.selectedMovie.runtime} min</span>
               </div>
               <div>
                 <span>{props.selectedMovie.overview}</span>

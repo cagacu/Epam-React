@@ -12,6 +12,7 @@ function MovieCard(props) {
           src={props.imageUrl}
           alt=""
           onClick={() => props.onMovieSelect(props.movieId)}
+          crossOrigin="*"
         />
         <AddEditModal
           buttonText="Edit Movie"

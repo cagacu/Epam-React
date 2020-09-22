@@ -8,31 +8,49 @@ const fetchMovieListAsyncRequest = () => ({
     }
 });
 
-const fetchMovieListAsyncResponse = (limit, responseJson) => ({
+const fetchMovieListAsyncResponse = (responseJson, { limit, sortBy, genre }) => ({
     type : ACTIONS.FETCH_MOVIE_LIST_ASYNC_RESPONSE,
     payload : {
         count : limit,
+        sortBy : sortBy,
+        genre : genre,
         movies : responseJson,
         receivedAt : Date.now(),
         isFetching : false
     }
 })
 
-const fetchMovieListAsync = (limit = 8) => (dispatch) =>
+export const fetchMovieListAsync = (limit) => (dispatch) =>
 {
     dispatch(fetchMovieListAsyncRequest())
     return fetch(API_CONFIGS.MOVIE_API_MOVIES_URL +'?limit='+limit)
     .then(response => response.json())
-    .then(json => dispatch(fetchMovieListAsyncResponse(limit, json)))
+    .then(json => dispatch(fetchMovieListAsyncResponse(json, { limit : limit })))
 }
 
-const selectMovie = (movieId) => ({
+export const selectMovie = (movieId) => ({
     type : ACTIONS.SELECT_MOVIE,
     payload : {
         movieId : movieId
     }
 })
 
-export { selectMovie };
+export const fetchMovieListByGenreAsync = (g, l) => (dispatch) =>
+{
+    dispatch(fetchMovieListAsyncRequest())
+    return fetch(API_CONFIGS.MOVIE_API_MOVIES_URL +'?searchBy=genres&filter='+g+'&limit='+l)
+    .then(response => response.json())
+    .then(json => dispatch(fetchMovieListAsyncResponse(json, { limit : l, genre : g })))
+}
+
+export const fetchSortedMovieListAsync = (sortBy, limit) => (dispatch) =>
+{
+    dispatch(fetchMovieListAsyncRequest())
+    return fetch(API_CONFIGS.MOVIE_API_MOVIES_URL +'?sortBy='+sortBy+'&sortOrder=desc&limit='+limit)
+    .then(response => response.json())
+    .then(json => dispatch(fetchMovieListAsyncResponse(json, { limit : limit, sortBy : sortBy })))
+}
+
+
 
 export default fetchMovieListAsync;
