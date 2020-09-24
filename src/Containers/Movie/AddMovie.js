@@ -10,9 +10,10 @@ function AddMoviewButton() {
         <ErrorBoundary>
           <AddEditModal
             buttonText="+ Add Movie"
-            modalForm={<MovieForm />}
             header="Add Movie"
-          ></AddEditModal>
+          >
+            <MovieForm />
+          </AddEditModal>
         </ErrorBoundary>
       </div>
     </Fragment>

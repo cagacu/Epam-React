@@ -10,10 +10,11 @@ class MovieGenreSelect extends Component {
   componentDidMount() {
     this.setState({
       genreList: [
-        { id: 1, value: "Action" },
-        { id: 2, value: "Drama" },
-        { id: 3, value: "Sci-Fi" },
-        { id: 4, value: "Adventure" }
+        { id: "Action", value: "Action" },
+        { id: "Drama", value: "Drama" },
+        { id: "Sci-Fi", value: "Sci-Fi" },
+        { id: "Adventure", value: "Adventure" },
+        { id: "Fantasy", value : "Fantasy"}
       ]
     });
   }
@@ -21,7 +22,7 @@ class MovieGenreSelect extends Component {
   render() {
     return (
       <Fragment>
-        <Form.Control as="select" value={this.props.selectedValue}>
+        <Form.Control as="select" name={this.props.name} value={this.props.selectedValue}>
           {this.state.genreList.map((g) => (
             <option key={g.id} value={g.id}>
               {g.value}

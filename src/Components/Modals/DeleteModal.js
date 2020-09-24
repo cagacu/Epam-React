@@ -2,6 +2,8 @@ import React from "react";
 import { Button, Modal } from "react-bootstrap";
 import { Trash } from "react-bootstrap-icons";
 import CommonModal from "./CommonModal";
+import { connect } from 'react-redux'
+import { deleteMovieAsync, clearFetchedMovie} from "../../Core/Actions/actionCreators" 
 
 class DeleteModal extends CommonModal {
   constructor(props) {
@@ -9,7 +11,11 @@ class DeleteModal extends CommonModal {
     this.confirmClick = this.confirmClick.bind(this);
   }
 
-  confirmClick() {
+  confirmClick(event) {
+    event.preventDefault();
+
+    this.props.onMovieDelete(this.props.movieId);
+
     this.hideModal();
   }
 
@@ -43,4 +49,12 @@ class DeleteModal extends CommonModal {
   }
 }
 
-export default DeleteModal;
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onMovieDelete: (id) => deleteMovieAsync({ movieId : id }, dispatch),
+    onMovieDeselect : () => dispatch(clearFetchedMovie()),
+  }
+}
+
+export default connect(null, mapDispatchToProps)(DeleteModal)

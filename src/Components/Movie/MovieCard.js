@@ -11,19 +11,21 @@ function MovieCard(props) {
         <img
           src={props.imageUrl}
           alt=""
-          onClick={() => props.onMovieSelect(props.movieId)}
+          onClick={ () => props.onMovieSelect(props.movieId) }
           crossOrigin="*"
         />
         <AddEditModal
           buttonText="Edit Movie"
           header="Edit Movie"
           isEditModal="true"
+          movieId={props.movieId}
         >
-          <MovieForm movieid={props.movieId} movie = {props.fetchedMovie} />
+          <MovieForm movieid={props.movieId} />
         </AddEditModal>
         <DeleteModal
           buttonText="Delete Movie"
           header="Delete Movie"
+          movieId={props.movieId}
         ></DeleteModal>
       </div>
       <div className="movieDescription">

@@ -23,11 +23,14 @@ const movieList = (state =[], action)  => {
                 receivedAt : action.payload.receivedAt,
                 isFetching : action.payload.isFetching
             }
-        case ACTIONS.FETCH_MOVIE:
-            if(action.payload.movie)
-                return {...state, fetchedMovie : action.payload.movie }
-            else
-                return {...state, fetchedMovie : undefined };
+        case ACTIONS.FETCH_MOVIE_ASYNC_RESPONSE:
+            return {...state, fetchedMovie : action.payload.movie }
+        case ACTIONS.CLEAR_FETCHED_MOVIE:
+            return {...state, fetchedMovie : undefined };
+        case ACTIONS.SAVE_MOVIE_ASYNC_RESPONSE:
+            return {...state, saveResponse : action.payload.result }
+            case ACTIONS.DELETE_MOVIE_ASYNC_RESPONSE:
+                return {...state, deleteResponse : action.payload.result }
         default:
             return state;
     }

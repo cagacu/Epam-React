@@ -8,7 +8,7 @@ let menuContent = ["All", "DOCUMENTARY", "COMEDY", "HORROR", "CRIME"];
 
 function SortMenu(props) {
   const FirstItem = (props) =>{
-    if(props.selected.toLowerCase() != "select")
+    if(props.selected.toLowerCase() !== "select")
       return ( <Dropdown.Item eventKey="-1">SELECT</Dropdown.Item> );
     else
       return null;
