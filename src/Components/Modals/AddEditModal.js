@@ -6,11 +6,14 @@ import CommonModal from "./CommonModal";
 import { connect } from 'react-redux'
 import { fetchMovieAsync, clearFetchedMovie, saveMovieAsync } from "../../Core/Actions/actionCreators"
 import ErrorBoundary from "../../Containers/Error/ErrorBoundary"
+import MovieForm from "../../Components/Movie/Forms/MovieForm";
+
 
 class AddEditModal extends CommonModal {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   static propTypes = {
@@ -21,24 +24,16 @@ class AddEditModal extends CommonModal {
     buttonText: "Click Me !"
   };
 
-  handleSubmit(event){
-    event.preventDefault();
-    const data = new FormData(event.target);
+  handleSubmit(s){
     
-    debugger;
-    var s = {
-      isUpdate : Boolean(this.props.isEditModal),
-      movieId : this.props.movieId,
-      title : data.get('title'),
-      date : data.get('date'),
-      genre : data.get('genre'),
-      overview : data.get('overview'),
-      runtime : data.get("runtime"),
-      imgUrl : data.get("url")
-    };
+    alert(">>>"+JSON.stringify(s));
 
     this.props.onMovieSave(s);
     
+    this.hideModal();
+  }
+
+  handleClose(){
     this.hideModal();
   }
 
@@ -73,20 +68,12 @@ class AddEditModal extends CommonModal {
         {triggerButton}
         <Modal show={this.state.show} onHide={this.hideModal}>
           <ErrorBoundary>
-            <Form onSubmit={this.handleSubmit}>
               <Modal.Header closeButton>
                 <Modal.Title>{this.props.header}</Modal.Title>
               </Modal.Header>
-              <Modal.Body>{this.props.children}</Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={this.hideModal}>
-                  Close
-                </Button>
-                <Button variant="primary" type="submit">
-                  Save Changes
-                </Button>
-              </Modal.Footer>
-            </Form>
+              <Modal.Body>
+                <MovieForm parentOnClick={this.handleSubmit} parentOnClose={this.handleClose} />
+              </Modal.Body>
           </ErrorBoundary>
         </Modal>
       </>

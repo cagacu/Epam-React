@@ -22,7 +22,7 @@ class MovieGenreSelect extends Component {
   render() {
     return (
       <Fragment>
-        <Form.Control as="select" name={this.props.name} value={this.props.selectedValue}>
+        <Form.Control {...this.props} as="select" name={this.props.name}>
           {this.state.genreList.map((g) => (
             <option key={g.id} value={g.id}>
               {g.value}
