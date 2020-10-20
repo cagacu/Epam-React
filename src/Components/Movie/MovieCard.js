@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import AddEditModal from "../Modals/AddEditModal";
 import DeleteModal from "../Modals/DeleteModal";
-import MovieForm from "../Movie/Forms/MovieForm";
 
 function MovieCard(props) {
   return (
@@ -20,7 +19,6 @@ function MovieCard(props) {
           isEditModal="true"
           movieId={props.movieId}
         >
-          <MovieForm movieid={props.movieId} />
         </AddEditModal>
         <DeleteModal
           buttonText="Delete Movie"

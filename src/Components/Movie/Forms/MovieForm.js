@@ -35,7 +35,7 @@ class MovieForm extends React.Component {
   handleSubmit(values, {setSubmitting}) {
     var s = {
       isUpdate : Boolean(this.state.isEditForm),
-      movieId : this.props.movieId,
+      movieId : this.props.movieid,
       title : values.title,
       date : values.date,
       genre : values.genre,
@@ -53,8 +53,6 @@ class MovieForm extends React.Component {
 
   validate(values){
     
-    const emailTest = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-
     let errors = {};
     if (values.title === "") {
       errors.title = "Title is required!";
@@ -95,8 +93,6 @@ class MovieForm extends React.Component {
             <Col>
               <span>MOVIE ID</span>
             </Col>
-          </Row>
-          <Row>
             <Col>
             <span>{this.props.movieid}</span>
             </Col>
@@ -107,10 +103,17 @@ class MovieForm extends React.Component {
 
     return(
       <Formik 
-              initialValues={{ title: "", date: "", url:"", genre:"", overview:"", runtime:""  }} 
+              initialValues={{ 
+                title: fetchedMovie.title, 
+                date: fetchedMovie.release_date, 
+                url:fetchedMovie.poster_path, 
+                genre:fetchedMovie.genres[0], 
+                overview:fetchedMovie.overview, 
+                runtime:fetchedMovie.runtime  
+              }} 
               validate={this.validate}
-                onSubmit={this.handleSubmit}
-                >
+              onSubmit={this.handleSubmit}
+              >
         {({ touched, errors, isSubmitting }) => (
           <Form>
             <Container>
@@ -129,7 +132,7 @@ class MovieForm extends React.Component {
                   <label htmlFor="date">Date</label>
                 </Col>
                 <Col>
-                  <Field name="date" as={Form.Control} type="date" value={fetchedMovie.release_date} className={`form-control ${touched.date && errors.date ? "is-invalid" : ""}`} />
+                  <Field name="date" as={Form.Control} type="date" className={`form-control ${touched.date && errors.date ? "is-invalid" : ""}`} />
                   <ErrorMessage component="div" name="date" className="invalid-feedback" />
                 </Col>
               </Row>
@@ -147,7 +150,7 @@ class MovieForm extends React.Component {
                   <label htmlFor="genre">Genre</label>
                 </Col>
                 <Col>
-                  <Field name="genre" as={MovieGenreSelect} selectedValue={fetchedMovie.genres[0]} />
+                  <Field name="genre" as={MovieGenreSelect} />
                   <ErrorMessage component="div" name="genre" className="invalid-feedback" />
                 </Col>
               </Row>
@@ -165,7 +168,7 @@ class MovieForm extends React.Component {
                   <label htmlFor="runtime">Runtime</label>
                 </Col>
                 <Col>
-                  <Field name="runtime" as={Form.Control} type="number" value={fetchedMovie.runtime} className={`form-control ${touched.runtime && errors.runtime ? "is-invalid" : ""}`}/>
+                  <Field name="runtime" as={Form.Control} type="number" className={`form-control ${touched.runtime && errors.runtime ? "is-invalid" : ""}`}/>
                   <ErrorMessage component="div" name="runtime" className="invalid-feedback" />
                 </Col>
               </Row>
@@ -175,14 +178,6 @@ class MovieForm extends React.Component {
                 <Col>
                   <Button variant="secondary" onClick={this.parentClose}>Close</Button>  
                   <Button variant="primary" type="submit" disabled={isSubmitting} > {isSubmitting ? "Please wait..." : "Submit"}</Button>
-                  
-                  
-
-                  {/* <Row>
-                    <Col>
-                    <button type="submit" className="btn secondary btn-block" disabled={isSubmitting} > {isSubmitting ? "Please wait..." : "Submit"} </button>
-                    </Col>
-                  </Row> */}
                 </Col>
               </Row>
             </Container>            

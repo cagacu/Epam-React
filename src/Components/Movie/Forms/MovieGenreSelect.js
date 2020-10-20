@@ -14,7 +14,8 @@ class MovieGenreSelect extends Component {
         { id: "Drama", value: "Drama" },
         { id: "Sci-Fi", value: "Sci-Fi" },
         { id: "Adventure", value: "Adventure" },
-        { id: "Fantasy", value : "Fantasy"}
+        { id: "Fantasy", value : "Fantasy"},
+        { id: "Animation", value: "Animation"}
       ]
     });
   }

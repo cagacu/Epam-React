@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Button, Modal } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { PencilFill } from "react-bootstrap-icons";
 import CommonModal from "./CommonModal";
@@ -26,8 +26,6 @@ class AddEditModal extends CommonModal {
 
   handleSubmit(s){
     
-    alert(">>>"+JSON.stringify(s));
-
     this.props.onMovieSave(s);
     
     this.hideModal();
@@ -39,6 +37,7 @@ class AddEditModal extends CommonModal {
 
   render() {
     let triggerButton;
+    let form;
     if (this.props.isEditModal) {
       triggerButton = (
         <Button
@@ -50,6 +49,8 @@ class AddEditModal extends CommonModal {
           <PencilFill />
         </Button>
       );
+
+      form = (<MovieForm parentOnClick={this.handleSubmit} parentOnClose={this.handleClose} movieid={this.props.movieId} /> );
     } else {
       triggerButton = (
         <Button
@@ -61,6 +62,8 @@ class AddEditModal extends CommonModal {
           onClick={this.showModal}
         ></Button>
       );
+
+      form = (<MovieForm parentOnClick={this.handleSubmit} parentOnClose={this.handleClose} /> );
     }
 
     return (
@@ -72,7 +75,7 @@ class AddEditModal extends CommonModal {
                 <Modal.Title>{this.props.header}</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <MovieForm parentOnClick={this.handleSubmit} parentOnClose={this.handleClose} />
+                {form}                
               </Modal.Body>
           </ErrorBoundary>
         </Modal>
