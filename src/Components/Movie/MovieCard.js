@@ -2,17 +2,21 @@ import React from "react";
 import PropTypes from "prop-types";
 import AddEditModal from "../Modals/AddEditModal";
 import DeleteModal from "../Modals/DeleteModal";
+import {  Link } from "react-router-dom";
 
 function MovieCard(props) {
   return (
     <div className="movieCard">
       <div className="movieImg">
-        <img
-          src={props.imageUrl}
-          alt=""
-          onClick={ () => props.onMovieSelect(props.movieId) }
-          crossOrigin="*"
-        />
+        <Link to={`/film/${props.movieId}`}>
+
+          <img
+            src={props.imageUrl}
+            alt=""
+            // onClick={ () => props.onMovieSelect(props.movieId) }
+            crossOrigin="*"
+          />
+        </Link>
         <AddEditModal
           buttonText="Edit Movie"
           header="Edit Movie"
