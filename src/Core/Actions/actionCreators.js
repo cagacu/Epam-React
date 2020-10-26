@@ -51,6 +51,14 @@ export const fetchSortedMovieListAsync = (sortBy, limit) => (dispatch) =>
     .then(json => dispatch(fetchMovieListAsyncResponse(json, { limit : limit, sortBy : sortBy })))
 }
 
+export const fetchSearchedMovieListAsync = (search, limit) => (dispatch) =>
+{
+    dispatch(fetchMovieListAsyncRequest())
+    return fetch(API_CONFIGS.MOVIE_API_MOVIES_URL +'?search='+search+'&searchBy=title&limit='+limit)
+    .then(response => response.json())
+    .then(json => dispatch(fetchMovieListAsyncResponse(json, { limit : limit })))
+}
+
 export const fetchMovieAsync = (movieId, dispatch, callback) => 
 {   
     return fetch(API_CONFIGS.MOVIE_API_MOVIES_URL + '/' + movieId)

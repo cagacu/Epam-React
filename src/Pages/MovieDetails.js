@@ -1,6 +1,6 @@
 
 import React from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import MovieDetail from "../Containers/Movie/MovieDetail";
 import { useDispatch, connect } from "react-redux";
 import {useEffect } from "react";

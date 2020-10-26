@@ -10,12 +10,13 @@ import {
 } from "react-router-dom";
 import MovieDetailPage from "./Pages/MovieDetails";
 import NotFound from "./Pages/NotFound";
+import SearchResult from "./Pages/SearchResult";
 
 export default function App() {
   return (
     <>
-      <Header />
       <Router>
+        <Header />
         <Switch>
           <Route exact path="/">
             <Content />
@@ -23,7 +24,10 @@ export default function App() {
           <Route name="film" path="/film/:id">
             <MovieDetailPage />
           </Route>
-          <Route name="film" path="*">
+          <Route name="search" path="/search/:searchQuery">
+            <SearchResult />
+          </Route>
+          <Route name="notFound" path="*">
             <NotFound />
           </Route>
         </Switch>

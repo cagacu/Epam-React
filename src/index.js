@@ -7,9 +7,6 @@ import fetchMovieListAsync from './Core/Actions/actionCreators';
 
 const store = storeFactory();
 
-store.dispatch(fetchMovieListAsync(8));
-
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store} >

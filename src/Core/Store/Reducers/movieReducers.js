@@ -13,7 +13,7 @@ const movieList = (state =[], action)  => {
         case ACTIONS.SORT_MOVIE_LIST:
         case ACTIONS.FETCH_MOVIE_LIST_ASYNC:
         case ACTIONS.FETCH_MOVIE_LIST_ASYNC_REQUEST:
-            return {...state, isFetching : action.payload.isFetching }
+            return {...state, movies : { data : [] }, isFetching : action.payload.isFetching }
         case ACTIONS.FETCH_MOVIE_LIST_ASYNC_RESPONSE:
             return {
                 count : action.payload.count,
